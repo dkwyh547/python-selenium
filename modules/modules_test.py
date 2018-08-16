@@ -1,11 +1,14 @@
 import unittest, time,os
-
+import pymysql as MySQLdb
+import pymysql
 from selenium import webdriver
+
+def HTS_sql()
 
 
 def HTS_login(driver,username,password):
-    driver.find_element_by_id("username").send_keys("username")
-    driver.find_element_by_id("password").send_keys("password")
+    driver.find_element_by_id("username").send_keys(username)
+    driver.find_element_by_id("password").send_keys(password)
     driver.find_element_by_id("login_btn").click()
     driver.switch_to.frame("iframe_system")
     t1 = driver.find_element_by_css_selector("div.alert:nth-child(1)")
