@@ -20,5 +20,5 @@ def userinfo(path):
     return user_list
 
 if __name__ == '__main__':
-    user_list = userinfo(r'D:\pythoncode\userinfo.txt')
+    user_list = userinfo(r'E:\auto case\python-selenium\test_case\userinfo.txt')
     print(user_list)

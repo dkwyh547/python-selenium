@@ -3,6 +3,7 @@ import unittest,time,os
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from modules.modules_test import *
+import operator
 
 #访问系统首页
 HTS_http('http://39.106.240.149/')
@@ -26,6 +27,15 @@ driver.find_element_by_id("password").send_keys("123456")
 #输入新增用户确认密码
 driver.find_element_by_id("confirmNewPassword").clear()
 driver.find_element_by_id("confirmNewPassword").send_keys("123456")
+#输入email信息
+driver.find_element_by_id("email").clear()
+driver.find_element_by_id("email").send_keys("261229090@qq.com")
+#输入电话信息
+driver.find_element_by_id("phone").clear()
+driver.find_element_by_id("phone").send_keys("0241-5013226")
+#输入手机号信息
+driver.find_element_by_id("mobile").clear()
+driver.find_element_by_id("mobile").send_keys("18204017653")
 #选择是否允许登录
 driver.find_element_by_css_selector("label.radio-inline:nth-child(1) > input:nth-child(1)").click()
 #选择系统权限
@@ -47,3 +57,5 @@ driver.find_element_by_css_selector(".in > li:nth-child(1) > a:nth-child(1)").cl
 listdata = driver.find_element_by_css_selector('#tree_table > tbody:nth-child(2) > tr:nth-child(1)')
 listdata = listdata.text
 listdata = listdata.split(' ')
+listsend = ['test10', 'testabc', '0241-5013226', '18204017653', '261229090@qq.com' , '编辑', '删除', '密码重置']
+print(operator.eq(listsend,listdata))
