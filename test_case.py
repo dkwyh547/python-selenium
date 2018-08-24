@@ -1,11 +1,9 @@
 #-*-coding=utf-8-*-
-import os
-#列出某个文件夹下的所有case，这里用的是python
-#所在py文件运行一次后会生成一个pyc的副本
-caselist=os.listdir("C:\\Users\\neunn\\Documents\\wushixin\\eclipse_job\\workspaces\\PythonCase\\src\\Python27\\test_case")
+import os,unittest
+
+caselist=os.listdir("E:\\auto case\\python-selenium\\test_case\\")
 for a in caselist:
-    s=a.split('.')[1]   #选取后缀名为py的文件
-    if s=='py':
-        #此处执行dos命令并将结果保存到log.txt
-        os.system('C:\\Users\\neunn\\Documents\\wushixin\\eclipse_job\\workspaces\\PythonCase\\src\\Python27\\test_case\\%s 1>>log.txt 2>&1' %a)
-        
+    s = a.split('.')[1]
+    if s == 'py':
+        os.system('E:\\auto case\\python-selenium\\test_case\\%s 1>>log.txt 2>&1' %a)
+

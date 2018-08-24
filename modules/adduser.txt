@@ -1,0 +1,7 @@
+name=test100
+login_name=testqaz
+pwd=123456
+confirmNewPassword=123456
+email=261229090@qq.com
+phone=0241-5013226
+mobile=18204017653
