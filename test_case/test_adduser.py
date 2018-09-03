@@ -1,30 +1,37 @@
-# -*- coding: utf-8 -*-
-from modules.modules_test import *
-from test_case.adduser import *
-from package.location import *
 from selenium import webdriver
-from selenium.common.exceptions import NoAlertPresentException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
+from package.location import *
+from adduser import *
+#from adduser import adduser_dict
+from modules.modules_test import *
+import login, loginout
+from pathlib import Path
+import unittest, time, operator
 
-
-class testusermanagement(unittest.TestCase):
-
+class AddUser(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
-        self.driver.implicitly_wait(5)
-        self.base_url = "http://47.93.96.59:8881"
+        self.driver.implicitly_wait(30)
+        self.base_url = "http://39.105.53.51:8897"
         self.verificationErrors = []
         self.accept_next_alert = True
-
-    def add_user(self):
+    def testadduser(self):
         driver = self.driver
         driver.get(self.base_url + "/")
+        login.login(self)
+        time.sleep(3)
+        adduser_dict = adduser(r'E:\auto case\python-selenium\test_case\adduser.txt')
         # 打开用户管理页面
         findLinkText(driver, "用户管理").click()
         findCss(driver, ".in > li:nth-child(1) > a:nth-child(1)").click()
+        time.sleep(5)
         # 新增用户按钮
         driver.switch_to_frame("iframe1")
         findId(driver, "button_post_insert").click()
+        time.sleep(5)
         # 输入新增用户名称
         findId(driver, "name").clear()
         findId(driver, "name").send_keys(adduser_dict['name'])
@@ -55,13 +62,14 @@ class testusermanagement(unittest.TestCase):
         findCss(driver, "label.checkbox-inline:nth-child(3) > input:nth-child(1)").click()
         # 点击保存按钮
         findXpath(driver, "/html/body/div[1]/section/header/span/button[1]").click()
-
-    def check_user(self):
+        time.sleep(3)
+    #check用户
         # 退出当前用户
         driver.switch_to_default_content()
-        HTS_logout(driver)
+        driver.find_element_by_css_selector(".dropdown-toggle").click()
+        driver.find_element_by_css_selector(".dropdown-alerts > li:nth-child(7) > a:nth-child(1)").click()
         # 登录新创建用户
-        HTS_login(driver, adduser_dict['login_name'], adduser_dict['pwd'])
+        HTS_login(driver, adduser_dict['  login_name'], adduser_dict['pwd'])
         # 打开用户管理页面
         findLinkText(driver, "用户管理").click()
         findCss(driver, ".in > li:nth-child(1) > a:nth-child(1)").click()
@@ -69,37 +77,19 @@ class testusermanagement(unittest.TestCase):
         listdata = findCss(driver, '#tree_table > tbody:nth-child(2) > tr:nth-child(1)')
         listdata = listdata.text
         listdata = listdata.split(' ')
-        listsend = []
         listsend = adduser_dict.values()
         listsend.append('编辑')
         listsend.append('删除')
         listsend.append('密码重置')
-        print(operator.eq(listsend, listdata))
-
-    def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        except NoSuchElementException as e:return False
-        return True
-
-    def is_alert_present(self):
-        try: self.driver.switch_to_alert()
-        except NoAlertPresentException as e: return False
-        return True
-
-    def close_alert_and_get_its_text(self):
-        try:
-            alert = self.driver.switch_to_alert()
-            alert_text = alert.text
-            if self.accept_next_alert:
-                alert.accept()
-            else:
-                alert.dismiss()
-            return alert_text
-        finally: self.accept_next_alert = True
-
+        result = operator.eq(listsend, listdata)
+        if result == True:
+            print('adduser is True')
+        else:
+            print('adduser is false')
+        driver.get_screenshot_as_file("E:/base_test/screenshot/adduser_false.png")
+    #驱动退出
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
-
 if __name__ == "__main__":
-    unittest.main()
+        unittest.main()

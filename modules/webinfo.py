@@ -16,6 +16,6 @@ def webinfo(path):
     return ele_dict
 
 if __name__ == '__main__':
-    ele_dict = webinfo(r'D:\pythoncode\webinfo.txt')
+    ele_dict = webinfo(r'E:\auto case\python-selenium\modules\webinfo.txt')
     for key in ele_dict:
         print(key,ele_dict[key])

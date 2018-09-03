@@ -23,7 +23,7 @@ def findPLinkText(driver,text):
     f = driver.find_element_by_partial_link_text(text)
     return f
 def findXpath(driver,xpath):
-    f = driverfind_element_by_xpath(xpath)
+    f = driver.find_element_by_xpath(xpath)
     return f
 def findCss(driver,css):
     f = driver.find_element_by_css_selector(css)

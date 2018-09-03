@@ -1,12 +1,9 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException,NoAlertPresentException
 from modules.modules_test import *
-from modules.adduser import *
+from test_case.adduser import *
 from package.location import *
-import unittest, time, re
+import unittest
+
 
 class UserControl(unittest.TestCase):
     def setUp(self):

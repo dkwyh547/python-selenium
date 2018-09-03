@@ -3,16 +3,6 @@ import unittest
 import pymysql
 import codecs
 
-def webinfo(path):
-    file = codecs.open(path,'r','gbk')
-    ele_dict = {}
-    for line in file:
-        result = [ele.strip() for ele in line.split('=')]
-        ele_dict.update(dict([result]))
-    return ele_dict
-
-
-
 #定义访问函数
 def HTS_http(ele_dict):
     driver = webdriver.Firefox()

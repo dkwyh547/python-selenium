@@ -5,7 +5,7 @@
 
 import codecs
 
-def adduserdata(path):
+def adduser(path):
     file = codecs.open(path,'r','gbk')
     adduser_dict = {}
     for line in file:
@@ -14,6 +14,6 @@ def adduserdata(path):
     return adduser_dict
 
 if __name__ == '__main__':
-    adduser_dict = webinfo(r'E:\auto case\python-selenium\modules\adduser.txt')
+    adduser_dict = adduser(r'E:\auto case\python-selenium\test_case\adduser.txt')
     for key in adduser_dict:
         print(key,adduser_dict[key])

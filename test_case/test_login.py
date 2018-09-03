@@ -27,7 +27,7 @@ class Login(unittest.TestCase):
             print("login_ok")
         else:
             print("login_false_")
-            driver.get_screenshot_as_png("E:\\auto case\\python-selenium\\screenshot\\login_false.png")
+            driver.get_screenshot_as_file("E:\\auto case\\python-selenium\\screenshot\\login_false.png")
         driver.switch_to_default_content()
     #用户退出
     def test_loginout(self):
