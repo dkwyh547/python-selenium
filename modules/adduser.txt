@@ -1,0 +1,9 @@
+login_name=testqqq
+name=test91
+phone=0241-5013123
+mobile=18204011123
+email=261229123@qq.com
+pwd=123456
+confirmNewPassword=123456
+un=wushixin
+pd=wushixin

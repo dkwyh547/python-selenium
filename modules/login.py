@@ -10,7 +10,7 @@ def login(self):
     driver.find_element_by_id("username").send_keys('wushixin')
     driver.find_element_by_id("password").send_keys('wushixin')
     driver.find_element_by_id("login_btn").click()
-    time.sleep(10)
+    time.sleep(3)
     driver.switch_to.frame("iframe_system")
     t1 = driver.find_element_by_css_selector("div.alert:nth-child(1)")
     t1 = t1.text

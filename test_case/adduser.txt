@@ -1,7 +1,0 @@
-name=test103
-login_name=testqqq
-pwd=123456
-confirmNewPassword=123456
-email=261229112@qq.com
-phone=0241-5013112
-mobile=18204011112
