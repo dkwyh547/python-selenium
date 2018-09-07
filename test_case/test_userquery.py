@@ -6,7 +6,7 @@
 # @Version : $Id$
 
 from selenium import webdriver
-from modules.modules_test import HTS_login, HTS_logout
+from modules.modules_test import HTS_login, HTS_loginout
 from modules.adduser import *
 import unittest
 import time
@@ -50,7 +50,7 @@ class UserQuery(unittest.TestCase):
             driver.get_screenshot_as_file(
                 "E:/base_test/screenshot/adduser_false.png")
         # 退出当前用户
-        HTS_logout(driver)
+        HTS_loginout(driver)
         driver.switch_to.default_content()
 
     def tearDown(self):

@@ -37,7 +37,7 @@ def HTS_login(driver, username, password):
 # 定义退出函数
 
 
-def HTS_logout(driver):
+def HTS_loginout(driver):
     driver.find_element_by_css_selector(".dropdown-toggle").click()
     driver.find_element_by_css_selector(".dropdown-alerts > li:nth-child(7) > a:nth-child(1)").click()
 

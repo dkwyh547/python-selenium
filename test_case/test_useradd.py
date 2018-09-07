@@ -7,7 +7,7 @@
 
 from selenium import webdriver
 from package.location import *
-from modules.modules_test import HTS_logout, HTS_login
+from modules.modules_test import HTS_loginout, HTS_login
 from modules.adduser import *
 import unittest
 import time
@@ -87,7 +87,7 @@ class UserAdd(unittest.TestCase):
     # check用户
         # 退出当前用户
         driver.switch_to.default_content()
-        HTS_logout(driver)
+        HTS_loginout(driver)
         # 登录新创建用户
         HTS_login(driver, adduser_dict['login_name'], adduser_dict['pwd'])
         infomsg = findCss(driver, '#gritter-item-1 > div.gritter-item').text
@@ -103,7 +103,7 @@ class UserAdd(unittest.TestCase):
                 "E:/base_test/screenshot/login2_false.png")
         driver.switch_to.default_content()
         # 退出当前用户
-        HTS_logout(driver)
+        HTS_loginout(driver)
     # 驱动退出
 
     def tearDown(self):
