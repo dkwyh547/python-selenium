@@ -1,6 +1,5 @@
-from selenium import webdriver
 from package.location import *
-from modules.adduser import *
+from test_case.adduser import *
 from modules.modules_test import *
 import unittest
 import time

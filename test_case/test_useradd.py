@@ -5,10 +5,9 @@
 # @Link    : http://blog.csdn.net/dkwyh547
 # @Version : $Id$
 
-from selenium import webdriver
 from package.location import *
 from modules.modules_test import HTS_loginout, HTS_login
-from modules.adduser import *
+from adduser import *
 import unittest
 import time
 
@@ -24,7 +23,7 @@ class UserAdd(unittest.TestCase):
     def testuseradd(self):
         driver = self.driver
         driver.get(self.base_url + "/")
-        adduser_dict = adduser(r'E:\auto case\python-selenium\modules\adduser.txt')
+        adduser_dict = adduser(r'E:\auto case\python-selenium\test_case\adduser.txt')
         HTS_login(driver, adduser_dict['un'], adduser_dict['pd'])
         infomsg = findCss(driver, '#gritter-item-1 > div.gritter-item').text
         driver.switch_to.frame("iframe_system")
